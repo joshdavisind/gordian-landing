@@ -1,0 +1,18 @@
+
+version: '3.8'
+services:
+  dev:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - node_modules:/workspace/node_modules
+    command: sleep infinity
+    ports:
+      - 3030:3030
+      - 5173:5173
+    environment:
+      - NODE_ENV=development
+volumes:
+  node_modules:

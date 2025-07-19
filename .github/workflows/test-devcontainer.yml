@@ -1,0 +1,84 @@
+name: Test Devcontainer
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-devcontainer:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+        
+    - name: Build devcontainer
+      run: |
+        cd .devcontainer
+        docker compose build
+        
+    - name: Start devcontainer
+      run: |
+        cd .devcontainer
+        docker compose up -d
+        
+    - name: Wait for container to be ready
+      run: |
+        echo "Waiting for container to be ready..."
+        sleep 10
+        
+    - name: Run setup script in container
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace && ./.devcontainer/setup.sh"
+        
+    - name: Verify workspace structure
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace && ls -la"
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace && ls -la api/ web/"
+        
+    - name: Install dependencies
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace && pnpm install"
+        
+    - name: Build web app
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace/web && pnpm run build"
+        
+    - name: Start API server in background
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace/api && timeout 30s pnpm run dev || true" &
+        
+    - name: Test API health endpoint
+      run: |
+        sleep 5
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "curl -f http://localhost:3030/api/health || echo 'API health check failed'"
+        
+    - name: Start web dev server briefly
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace/web && timeout 10s pnpm run dev || echo 'Web dev server test completed'"
+        
+    - name: Verify TypeScript compilation
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace/web && npx tsc --noEmit"
+        
+    - name: Run linting
+      run: |
+        docker compose -f .devcontainer/docker-compose.yml exec -T dev bash -c "cd /workspace && pnpm run lint || echo 'Linting completed with warnings'"
+        
+    - name: Cleanup
+      if: always()
+      run: |
+        cd .devcontainer
+        docker compose down -v

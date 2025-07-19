@@ -1,0 +1,17 @@
+
+node_modules
+dist
+build
+.git
+.gitignore
+.vscode
+.idea
+Dockerfile
+docker-compose.yml
+.devcontainer
+.env
+.env.*
+*.md
+logs
+coverage
+*.log

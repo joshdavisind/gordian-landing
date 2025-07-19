@@ -1,0 +1,18 @@
+{
+  "name": "feathers-shadcn-devcontainer",
+  "version": "1.0.0",
+  "description": "FeathersJS + ShadCN development environment",
+  "scripts": {
+    "dev": "pnpm --parallel --stream run dev",
+    "build": "pnpm --recursive run build",
+    "lint": "pnpm --recursive run lint",
+    "test": "pnpm --recursive run test"
+  },
+  "keywords": ["feathersjs", "shadcn", "devcontainer"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

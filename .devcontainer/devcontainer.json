@@ -1,0 +1,21 @@
+
+{
+  "name": "Feathers + ShadCN Dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20",
+      "packageManager": "pnpm"
+    }
+  },
+  "postCreateCommand": "./.devcontainer/setup.sh",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
+  ]
+}
