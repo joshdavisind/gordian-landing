@@ -10,7 +10,7 @@
       "packageManager": "pnpm"
     }
   },
-  "postCreateCommand": "./.devcontainer/setup.sh",
+  "postCreateCommand": "/usr/local/bin/fix-permissions.sh && ./.devcontainer/setup.sh",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   },
