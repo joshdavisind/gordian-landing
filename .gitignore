@@ -22,3 +22,7 @@ web/dist/
 *.sqlite
 .prisma/
 *.tgz
+
+# PNPM cache and Claude settings
+.pnpm-store/
+.claude/
