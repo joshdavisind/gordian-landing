@@ -20,9 +20,7 @@ app.get('/api/health', (req, res) => {
 app.use(express.errorHandler());
 
 const port = app.get('port') || 3030;
-const server = app.listen(port);
-
-server.on('listening', () => {
+const server = app.listen(port, () => {
   console.log(`🚀 FeathersJS API started on http://localhost:${port}`);
 });
 

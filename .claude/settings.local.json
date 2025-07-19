@@ -4,7 +4,12 @@
       "Bash(find:*)",
       "Bash(ls:*)",
       "Bash(cat:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(act push:*)",
+      "Bash(act:*)",
+      "Bash(docker compose:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)"
     ],
     "deny": []
   }
