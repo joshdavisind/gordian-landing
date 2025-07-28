@@ -19,7 +19,8 @@
       "Bash(rm:*)",
       "Bash(pnpm build:*)",
       "Bash(pnpm add:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(chmod:*)"
     ],
     "deny": []
   }

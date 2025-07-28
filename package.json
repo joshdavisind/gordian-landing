@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --parallel --stream run dev",
-    "build": "pnpm --recursive run build && node scripts/verify-build.js",
+    "build": "node scripts/build-with-logging.js",
+    "build:simple": "pnpm --recursive run build && node scripts/verify-build.js",
     "lint": "pnpm --recursive run lint",
     "test": "pnpm --recursive run test",
-    "deploy": "cd web && npm run build && cd .. && wrangler deploy",
+    "deploy": "node scripts/build-with-logging.js && wrangler deploy",
     "verify-build": "node scripts/verify-build.js"
   },
   "keywords": [
