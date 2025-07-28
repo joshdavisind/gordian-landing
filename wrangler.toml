@@ -1,0 +1,15 @@
+name = "gordianweblanding"
+main = "workers-site/index.js"
+compatibility_date = "2024-07-28"
+workers_dev = true
+
+[site]
+bucket = "./web/dist"
+
+[[routes]]
+pattern = "gordiandev.io/*"
+zone_name = "gordiandev.io"
+
+[[routes]]
+pattern = "www.gordiandev.io/*"
+zone_name = "gordiandev.io"
