@@ -6,7 +6,8 @@
     "dev": "pnpm --parallel --stream run dev",
     "build": "pnpm --recursive run build",
     "lint": "pnpm --recursive run lint",
-    "test": "pnpm --recursive run test"
+    "test": "pnpm --recursive run test",
+    "deploy": "cd web && npm run build && cd .. && wrangler deploy"
   },
   "keywords": ["gordian", "development", "web", "landing", "fullstack"],
   "author": "",
