@@ -1,6 +1,6 @@
 
 {
-  "name": "Feathers + ShadCN Dev",
+  "name": "Gordian Development Web Landing",
   "dockerComposeFile": "docker-compose.yml",
   "service": "dev",
   "workspaceFolder": "/workspace",

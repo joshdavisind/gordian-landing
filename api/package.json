@@ -1,7 +1,7 @@
 {
-  "name": "feathers-api",
+  "name": "gordian-api",
   "version": "1.0.0",
-  "description": "FeathersJS API backend",
+  "description": "Gordian Development API backend",
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint src/",
     "build": "echo 'No build step required for Node.js'"
   },
-  "keywords": ["feathersjs", "api", "backend"],
+  "keywords": ["gordian", "api", "backend", "feathersjs"],
   "author": "",
   "license": "ISC",
   "dependencies": {

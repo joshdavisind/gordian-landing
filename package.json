@@ -1,14 +1,14 @@
 {
-  "name": "feathers-shadcn-devcontainer",
+  "name": "gordian-development-web-landing",
   "version": "1.0.0",
-  "description": "FeathersJS + ShadCN development environment",
+  "description": "Gordian Development Web Landing - Full-stack web application",
   "scripts": {
     "dev": "pnpm --parallel --stream run dev",
     "build": "pnpm --recursive run build",
     "lint": "pnpm --recursive run lint",
     "test": "pnpm --recursive run test"
   },
-  "keywords": ["feathersjs", "shadcn", "devcontainer"],
+  "keywords": ["gordian", "development", "web", "landing", "fullstack"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
