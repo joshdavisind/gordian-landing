@@ -1,66 +1,61 @@
-import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
-
-addEventListener('fetch', event => {
-  event.respondWith(handleEvent(event));
-});
-
-async function handleEvent(event) {
-  const url = new URL(event.request.url);
-  console.log(`[Worker] ${event.request.method} ${url.pathname}`);
-
-  try {
-    // Serve from KV
-    const response = await getAssetFromKV(event, {
-      waitUntil(promise) {
-        return event.waitUntil(promise);
-      }
-    });
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
     
-    console.log(`[Worker] Served ${url.pathname} - Status: ${response.status}`);
-    return response;
-  } catch (e) {
-    // If not found, try to serve index.html for SPA routing
-    if (e.status === 404) {
-      console.log(`[Worker] 404 for ${url.pathname}, trying index.html`);
+    // Debug endpoint to check what's available
+    if (url.pathname === '/debug') {
+      const debugInfo = {
+        timestamp: new Date().toISOString(),
+        url: request.url,
+        env_keys: Object.keys(env),
+        env_ASSETS: !!env.ASSETS,
+        env___STATIC_CONTENT: !!env.__STATIC_CONTENT,
+        env___STATIC_CONTENT_MANIFEST: !!env.__STATIC_CONTENT_MANIFEST,
+        cwd: typeof __dirname !== 'undefined' ? __dirname : 'not available',
+        message: 'Worker is running, checking bindings...'
+      };
       
-      try {
-        const response = await getAssetFromKV(event, {
-          mapRequestToAsset: () => new Request(`${url.origin}/index.html`, event.request),
-          waitUntil(promise) {
-            return event.waitUntil(promise);
-          }
-        });
-        
-        return new Response(response.body, {
-          ...response,
-          headers: {
-            ...response.headers,
-            'content-type': 'text/html;charset=UTF-8',
-          }
-        });
-      } catch (e) {
-        console.error('[Worker] Failed to serve index.html:', e);
-      }
+      return new Response(JSON.stringify(debugInfo, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
     
-    console.error('[Worker] Error:', e.message || e);
-    
+    // Manual HTML response to confirm worker is running
     return new Response(`
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Error - Gordian Development</title>
+    <title>Gordian Development</title>
+    <style>
+      body { font-family: sans-serif; padding: 2rem; }
+      .debug { background: #f0f0f0; padding: 1rem; margin: 1rem 0; }
+    </style>
 </head>
 <body>
-    <h1>Error Loading Page</h1>
-    <p>Path: ${url.pathname}</p>
-    <p>Error: ${e.message || e}</p>
-    <p>If you're seeing this, the worker is running but having trouble serving static files.</p>
+    <h1>Gordian Development</h1>
+    <p>Worker is running but static assets are not loading.</p>
+    
+    <div class="debug">
+      <h2>Debug Information:</h2>
+      <p>Requested: ${url.pathname}</p>
+      <p>Time: ${new Date().toISOString()}</p>
+      <p>Has ASSETS binding: ${!!env.ASSETS}</p>
+      <p>Has __STATIC_CONTENT: ${!!env.__STATIC_CONTENT}</p>
+      <p>Environment keys: ${Object.keys(env).join(', ') || 'none'}</p>
+    </div>
+    
+    <p>Visit <a href="/debug">/debug</a> for JSON debug output</p>
+    
+    <h3>Expected files in web/dist:</h3>
+    <ul>
+      <li>index.html</li>
+      <li>assets/index-*.css</li>
+      <li>assets/index-*.js</li>
+    </ul>
 </body>
 </html>
     `, {
-      status: e.status || 500,
-      headers: { 'Content-Type': 'text/html' }
+      headers: { 'Content-Type': 'text/html;charset=UTF-8' }
     });
-  }
-}
+  },
+};

@@ -20,7 +20,10 @@
       "Bash(pnpm build:*)",
       "Bash(pnpm add:*)",
       "Bash(node:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(cp:*)",
+      "Bash(true)",
+      "WebFetch(domain:developers.cloudflare.com)"
     ],
     "deny": []
   }
