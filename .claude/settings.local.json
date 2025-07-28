@@ -9,7 +9,16 @@
       "Bash(act:*)",
       "Bash(docker compose:*)",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(rm:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm add:*)"
     ],
     "deny": []
   }

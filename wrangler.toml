@@ -1,11 +1,9 @@
 name = "gordianweblanding"
-main = "workers-site/index.js"
+main = "src/index.js"
 compatibility_date = "2024-07-28"
 workers_dev = true
 account_id = "97c584926edd1917b51cac84d7aae155"
-
-[site]
-bucket = "./web/dist"
+assets = { directory = "./web/dist" }
 
 [[routes]]
 pattern = "gordiandev.io/*"

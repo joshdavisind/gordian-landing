@@ -9,10 +9,17 @@
     "test": "pnpm --recursive run test",
     "deploy": "cd web && npm run build && cd .. && wrangler deploy"
   },
-  "keywords": ["gordian", "development", "web", "landing", "fullstack"],
+  "keywords": [
+    "gordian",
+    "development",
+    "web",
+    "landing",
+    "fullstack"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cloudflare/kv-asset-handler": "^0.4.0",
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0"
   }
