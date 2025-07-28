@@ -5,6 +5,9 @@ workers_dev = true
 account_id = "97c584926edd1917b51cac84d7aae155"
 assets = { directory = "./web/dist" }
 
+[observability.logs]
+enabled = true
+
 [[routes]]
 pattern = "gordiandev.io/*"
 zone_name = "gordiandev.io"
