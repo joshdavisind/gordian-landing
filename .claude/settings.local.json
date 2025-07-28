@@ -18,7 +18,8 @@
       "Bash(curl:*)",
       "Bash(rm:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(node:*)"
     ],
     "deny": []
   }

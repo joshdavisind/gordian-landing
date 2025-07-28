@@ -2,12 +2,14 @@
   "name": "gordian-development-web-landing",
   "version": "1.0.0",
   "description": "Gordian Development Web Landing - Full-stack web application",
+  "type": "module",
   "scripts": {
     "dev": "pnpm --parallel --stream run dev",
-    "build": "pnpm --recursive run build",
+    "build": "pnpm --recursive run build && node scripts/verify-build.js",
     "lint": "pnpm --recursive run lint",
     "test": "pnpm --recursive run test",
-    "deploy": "cd web && npm run build && cd .. && wrangler deploy"
+    "deploy": "cd web && npm run build && cd .. && wrangler deploy",
+    "verify-build": "node scripts/verify-build.js"
   },
   "keywords": [
     "gordian",
