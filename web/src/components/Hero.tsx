@@ -14,31 +14,31 @@ const Hero: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-3 py-1.5 rounded-md bg-gray-100 text-gray-700 text-sm font-medium mb-8">
+            <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-2"></span>
             Newly Forming Consulting Company
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
             <span className="block">Software Development,</span>
             <span className="block text-blue-600">Technology &</span>
             <span className="block">Leadership Consulting</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
             We help organizations navigate complex technical challenges and develop 
             exceptional leadership capabilities for sustainable growth and innovation.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-200 flex items-center group">
+            <button className="bg-gray-900 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center group">
               Start Your Journey
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
-            <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200">
+            <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-md text-sm font-medium hover:border-gray-400 hover:bg-gray-50 transition-all duration-200">
               Learn More
             </button>
           </div>

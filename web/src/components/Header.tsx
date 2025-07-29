@@ -12,15 +12,14 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-gray-900">
-                <span className="text-blue-600">Gordian</span>
-                <span className="text-gray-700">Development</span>
+              <h1 className="text-xl font-semibold text-gray-900">
+                Gordian<span className="text-gray-600 font-normal">Development</span>
               </h1>
             </div>
           </div>
@@ -31,7 +30,7 @@ const Header: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -40,7 +39,7 @@ const Header: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+            <button className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
               Get Started
             </button>
           </div>
@@ -71,7 +70,7 @@ const Header: React.FC = () => {
                 </a>
               ))}
               <div className="pt-4">
-                <button className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+                <button className="w-full bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
                   Get Started
                 </button>
               </div>
