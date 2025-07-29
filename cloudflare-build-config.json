@@ -1,0 +1,9 @@
+{
+  "build": {
+    "command": "pnpm install --frozen-lockfile && pnpm build",
+    "output": "web/dist"
+  },
+  "deploy": {
+    "command": "npx wrangler deploy --site web/dist"
+  }
+}
