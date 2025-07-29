@@ -17,12 +17,15 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 flex items-center gap-3">
               <img 
                 src="/roughlogo.png" 
-                alt="Gordian Development" 
+                alt="Gordian Development Logo" 
                 className="h-8 w-auto"
               />
+              <h1 className="text-xl font-semibold text-gray-900">
+                Gordian<span className="text-gray-600 font-normal">Development</span>
+              </h1>
             </div>
           </div>
 
