@@ -16,7 +16,7 @@ logs/
 *.code-workspace
 .DS_Store
 Thumbs.db
-public/
+# public/
 web/dist/
 *.db
 *.sqlite
